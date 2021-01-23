@@ -1,29 +1,30 @@
 import React from "react";
-import CopyToClipBoard from "react-copy-to-clipboard";
-import { Grid, withStyles, Button } from "@material-ui/core";
-import useStyles from "./colorBox.style";
-import InnerContent from "./InnerContent";
+
+import Content from "./Content";
 
 class ColorBox extends React.Component {
-  render() {
-    const { background, name, classes } = this.props;
+  constructor(props){
+    super(props);
+    this.state = {copied : false};
+    this.handleOverlay = this.handleOverlay.bind(this);
+  }
 
-    return (
-      <CopyToClipBoard text={background}>
-        <Grid
-          item
-          container
-          xs={12}
-          sm={3}
-          style={{ background }}
-          className={classes.root}
-          direction="column"
-        >
-          <InnerContent name={name} />
-        </Grid>
-      </CopyToClipBoard>
-    );
+  handleOverlay(){
+    this.setState({copied: true}, () => {
+      setTimeout(() => this.setState({copied: false}), 1500)
+    })
+  }
+  
+  render() {
+    const { background, name } = this.props;
+    const {copied } = this.state;
+    
+    return <Content 
+              background={background} 
+              onCopy={this.handleOverlay} 
+              name={name} 
+              copied={copied}/>
   }
 }
 
-export default withStyles(useStyles)(ColorBox);
+export default ColorBox;
