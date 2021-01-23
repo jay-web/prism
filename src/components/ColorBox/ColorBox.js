@@ -1,43 +1,27 @@
 import React from "react";
+import CopyToClipBoard from "react-copy-to-clipboard";
 import { Grid, withStyles, Button } from "@material-ui/core";
 import useStyles from "./colorBox.style";
+import InnerContent from "./InnerContent";
 
 class ColorBox extends React.Component {
   render() {
     const { background, name, classes } = this.props;
 
     return (
-      <Grid item
-        container
-        xs={12}
-        sm={3}
-        style={{ background }}
-        className={classes.root}
-        direction="column"
-      >
+      <CopyToClipBoard text={background}>
         <Grid
           item
           container
-          alignItems="center"
-          justify="center"
-          className={classes.buttonBox}
+          xs={12}
+          sm={3}
+          style={{ background }}
+          className={classes.root}
+          direction="column"
         >
-          <Button className={classes.button}> Copy</Button>
+          <InnerContent name={name} />
         </Grid>
-
-        <Grid
-          item
-          container
-          justify="space-between"
-          alignItems="flex-end"
-          className={classes.copyContainer}
-        >
-          <Grid className={classes.boxContent}>{name}</Grid>
-          <Grid item className={classes.seeMore}>
-            More
-          </Grid>
-        </Grid>
-      </Grid>
+      </CopyToClipBoard>
     );
   }
 }
