@@ -2,6 +2,8 @@ import React from "react";
 import { Grid, withStyles, Button } from "@material-ui/core";
 import useStyles from "./colorBox.style";
 
+import CustomizedSnackbars from "./Snackbar";
+
 class InnerContent extends React.Component {
   render() {
     const { name, classes } = this.props;
@@ -14,7 +16,12 @@ class InnerContent extends React.Component {
           justify="center"
           className={classes.buttonBox}
         >
-          <Button className={classes.button}> Copy</Button>
+          {/* <Button className={classes.button}> Copy</Button> */}
+          {/* <SimplePopover look={classes.button} /> */}
+          <Grid item>
+          <CustomizedSnackbars />
+          </Grid>
+          
         </Grid>
 
         <Grid

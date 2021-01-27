@@ -11,8 +11,12 @@ class ColorBox extends React.Component {
 
   handleOverlay(){
     this.setState({copied: true}, () => {
-      setTimeout(() => this.setState({copied: false}), 1500)
+      this.intervalId = setTimeout(() => this.setState({copied: false}), 1500)
     })
+  }
+  
+  componentWillUnmount(){
+    clearInterval(this.intervalId);
   }
   
   render() {
