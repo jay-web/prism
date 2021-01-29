@@ -6,17 +6,21 @@ class ColorBox extends React.Component {
   constructor(props){
     super(props);
     this.state = {copied : false};
-    this.handleOverlay = this.handleOverlay.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+    this.handleClose = this.handleClose.bind(this);
+   
+    
   }
 
-  handleOverlay(){
-    this.setState({copied: true}, () => {
-      this.intervalId = setTimeout(() => this.setState({copied: false}), 1500)
-    })
+  handleClick() {
+    this.setState({ copied: true });
   }
-  
-  componentWillUnmount(){
-    clearInterval(this.intervalId);
+
+  handleClose(event, reason) {
+    if (reason === "clickaway") {
+      return;
+    }
+    this.setState({ copied: false });
   }
   
   render() {
@@ -25,9 +29,12 @@ class ColorBox extends React.Component {
     
     return <Content 
               background={background} 
-              onCopy={this.handleOverlay} 
+              handleClick={this.handleClick} 
+              handleClose={this.handleClose}
               name={name} 
-              copied={copied}/>
+              copied={copied}
+              ref={this.myRef}
+              />
   }
 }
 

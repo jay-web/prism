@@ -6,17 +6,18 @@ import { Grid, withStyles } from "@material-ui/core";
 import useStyles from "./colorBox.style";
 
 class Content extends React.Component {
+  
   render() {
-    const { background, onCopy, name, copied, classes } = this.props;
+    const { background, handleClick, name, copied, handleClose, classes } = this.props;
 
     return (
-      <CopyToClipBoard text={background} onCopy={onCopy}>
-        <Grid item container xs={12} sm={3} direction="column"
-          style={{ background }}
-          className={classes.root}
-        >
+      <CopyToClipBoard text={background} onCopy={handleClick} >
+        <Grid item container xs={12} sm={4} md={3} direction="column" style={{ background }} className={classes.root} justify="flex-end">
           {/* <Overlay background={background} copied={copied}  /> */}
-          <InnerContent name={name} />
+          <Grid item >
+           <InnerContent {...this.props}  />
+          </Grid>
+          
         </Grid>
       </CopyToClipBoard>
     );
