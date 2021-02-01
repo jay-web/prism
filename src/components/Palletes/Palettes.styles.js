@@ -2,17 +2,11 @@ import {createStyles} from "@material-ui/core";
 
 const useStyles = createStyles({
    
-    paletteRoot: {
-        display: "flex",
-        flexDirection: "column"
+
+    center:{
+        flexGrow: 2
     },
-    item1:{
-        flexGrow: 1
-    },
-    item2:{
-        flexGrow: 4
-    
-    }
+
 })
 
 

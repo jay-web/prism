@@ -1,6 +1,6 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import Slider from "@material-ui/core/Slider";
+import { PrismSlider} from "./sliderStyle";
+
 
 class SliderBox extends React.Component {
     constructor(props){
@@ -15,19 +15,21 @@ class SliderBox extends React.Component {
 
   render() {
     return (
-      <div style={{width: "300px"}}>
-        <Slider
+      <span style={{ display: "flex", width: "300px", alignItems: "center"}}>
+        <span>Level</span>
+        <PrismSlider
         //   defaultValue={this.props.level || 500}
-        defaultValue={this.props.level}
+          // track={false}
+          defaultValue={this.props.level}
           onChangeCommitted={this.valuetext}
-          aria-labelledby="discrete-slider-small-steps"
           step={100}
           marks={false}
           min={100}
           max={900}
-          valueLabelDisplay="auto"
+          
         />
-      </div>
+        <span>{this.props.level}</span>
+      </span>
     );
   }
 }
