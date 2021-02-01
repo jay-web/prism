@@ -4,7 +4,7 @@ import useStyles from "./colorBox.style";
 
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
-import CopyButton from "./SnackBar";
+import CopyButton from "./CopyButton";
 
 // import Snackbars from "./Snackbar";
 
@@ -17,7 +17,7 @@ class InnerContent extends React.Component {
       <div >
         <Grid container alignItems="center" justify="space-evenly" className={classes.buttonBox}>
           <Grid item className={classes.copyButton}>
-            <CopyButton handleClick={handleClick}handleClose={handleClose} open={copied} classes={classes}  />
+            <CopyButton {...this.props} />
           </Grid>
           <Grid item container justify="space-between" alignItems="flex-end" className={classes.copyContainer}>
             <Grid className={classes.boxContent}>{name}</Grid>

@@ -15,7 +15,7 @@ class SliderBox extends React.Component {
 
   render() {
     return (
-      <div style={{width: "300px", paddingTop: "2rem"}}>
+      <div style={{width: "300px"}}>
         <Slider
         //   defaultValue={this.props.level || 500}
         defaultValue={this.props.level}

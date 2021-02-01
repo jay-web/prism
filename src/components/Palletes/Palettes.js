@@ -9,32 +9,40 @@ import "rc-slider/assets/index.css";
 class Palettes extends React.Component {
   constructor(props){
     super(props);
-    this.state = {level: 500};
+    this.state = {level: 500, format: 'hex'};
     this.changeLevel = this.changeLevel.bind(this);
+    this.handleFormat = this.handleFormat.bind(this);
   }
 
   changeLevel(level){
     this.setState({level: level});
     console.log(level)
   }
+  handleFormat(e){
+    this.setState({ format : e.target.value})
+  }
   render() {
     const { classes } = this.props;
     const { colors } = this.props.palettes;
-    const { level } = this.state;
+    const { level, format } = this.state;
 
     const colorBoxes = colors[level].map((item) => {
       return (
-        <ColorBox background={item.hex} name={item.name} key={item.name} />
+        <ColorBox background={item[format]} name={item.name} key={item.name} />
       );
     });
     return (
-      <>
-        <Header changeLevel={this.changeLevel} level={this.state.level} />
+      <Grid container direction="column">
+        <Grid item>
+        <Header changeLevel={this.changeLevel} level={this.state.level} 
+                format={format} handleFormat={this.handleFormat}/>
+        </Grid>
+       
         {/* <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.changeLevel} /> */}
-        <Grid container className={classes.root}>
+        <Grid item container >
           {colorBoxes}
         </Grid>
-      </>
+      </Grid>
     );
   }
 }

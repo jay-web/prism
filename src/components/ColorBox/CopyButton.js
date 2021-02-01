@@ -2,6 +2,8 @@ import React from "react";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import { Button } from "@material-ui/core";
+import PrismSnackBar from "../Snackbar/Snackbar";
+
 
 class CopyButton extends React.Component {
     constructor(props){
@@ -10,7 +12,7 @@ class CopyButton extends React.Component {
       }
 
   render() {
-    const { handleClick, handleClose, classes, open } = this.props;
+    const { handleClick, handleClose, classes, copied, background } = this.props;
     return (
       <div ref={this.myRef} >
         <Button
@@ -20,16 +22,8 @@ class CopyButton extends React.Component {
         >
           Copy
         </Button>
-        <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
-          <Alert
-            elevation={6}
-            variant="filled"
-            onClose={handleClose}
-            severity="success"
-          >
-            Copied on clipboard
-          </Alert>
-        </Snackbar>
+        <PrismSnackBar background={background} copied={copied} handleClose={handleClose} message="Copied on clipboard -" />
+       
       </div>
     );
   }
