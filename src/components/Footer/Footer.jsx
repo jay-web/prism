@@ -1,8 +1,9 @@
 import React from "react";
+import "./footer.css";
 
 const Footer = (props) => {
     return(
-        <div style={{ marginTop: "1rem"}}> {props.name}</div>
+        <div className="footer"> {props.name}</div>
     )
 } 
 

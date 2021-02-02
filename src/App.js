@@ -5,6 +5,7 @@ import seedColors from "./seedColors";
 import "./App.css";
 import { generatePallette} from "./colorGenerator";
 import Home from "./components/Home/Home";
+import SingleColorShades from "./components/SingleColorShades/SingleColorShades";
 
 const findPalette = (paletteName)  => {
   return seedColors.find((item) => {
@@ -17,13 +18,18 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={Home}/>
-      <Route exact 
+      
+      <Route 
+        exact 
         path="/palette/:paletteName" 
         render={(routeProps) => (
           <Palettes 
+          paletteId={routeProps.match.params.paletteName}
           palettes={generatePallette(findPalette(routeProps.match.params.paletteName))} />
         ) }
         />
+        <Route exact path="/palette/:paletteId/:colorId" component={SingleColorShades} />
+        
     </Switch>
   );
 }

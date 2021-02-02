@@ -12,11 +12,12 @@ class Header extends React.Component {
       format,
       handleFormat,
       paletteName,
+      showSlider
     } = this.props;
     return (
       <div className="header-root">
         <Link to="/" className="title" ><span >Prism</span></Link>
-        <SliderBox changeLevel={changeLevel} level={level} />
+        { showSlider && <SliderBox changeLevel={changeLevel} level={level} /> }
         <FormatSelector format={format} handleChange={handleFormat} />
       </div>
     );

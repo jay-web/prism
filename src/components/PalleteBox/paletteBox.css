@@ -22,3 +22,10 @@
     justify-content: space-between;
     align-items:flex-end;
 }
+
+.links{
+    text-decoration: none;
+}
+.p-title{
+    color: black;
+}

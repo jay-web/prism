@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid, withStyles, Button } from "@material-ui/core";
 import useStyles from "./colorBox.style";
-
+import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import CopyButton from "./CopyButton";
@@ -12,7 +12,8 @@ class InnerContent extends React.Component {
  
 
   render() {
-    const { name, classes, handleClick, copied, handleClose } = this.props;
+    const { name, classes, paletteId, id } = this.props;
+    console.log(this.props);
     return (
       <div >
         <Grid container alignItems="center" justify="space-evenly" className={classes.buttonBox}>
@@ -21,7 +22,11 @@ class InnerContent extends React.Component {
           </Grid>
           <Grid item container justify="space-between" alignItems="flex-end" className={classes.copyContainer}>
             <Grid className={classes.boxContent}>{name}</Grid>
-            <Grid item className={classes.seeMore}>More</Grid>
+            <Grid item >
+              <Link to={`/palette/${paletteId}/${id}`} className={classes.seeMore} onClick={e => e.stopPropagation()} >
+              More
+              </Link>
+              </Grid>
           </Grid>
         </Grid>
 

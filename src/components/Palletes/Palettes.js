@@ -23,13 +23,15 @@ class Palettes extends React.Component {
     this.setState({ format: e.target.value });
   }
   render() {
-    const { classes } = this.props;
+    const { classes, paletteId } = this.props;
     const { colors, id } = this.props.palettes;
     const { level, format } = this.state;
-
+    
+    console.log(this.props);
     const colorBoxes = colors[level].map((item) => {
+      const items = {...item, paletteId};
       return (
-        <ColorBox background={item[format]} name={item.name} key={item.name} />
+        <ColorBox background={item[format]} {...items}  key={item.name} />
       );
     });
     return (
@@ -41,6 +43,7 @@ class Palettes extends React.Component {
             format={format}
             handleFormat={this.handleFormat}
             paletteName={id}
+            showSlider={true}
           />
         </Grid>
 

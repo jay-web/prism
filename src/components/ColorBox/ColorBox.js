@@ -26,14 +26,13 @@ class ColorBox extends React.Component {
   render() {
     const { background, name } = this.props;
     const {copied } = this.state;
-    
+    // console.log(this.props);
     return <Content 
-              background={background} 
               handleClick={this.handleClick} 
               handleClose={this.handleClose}
-              name={name} 
               copied={copied}
               ref={this.myRef}
+              {...this.props}
               />
   }
 }

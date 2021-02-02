@@ -8,8 +8,8 @@ import useStyles from "./colorBox.style";
 class Content extends React.Component {
   
   render() {
-    const { background, handleClick, name, copied, handleClose, classes } = this.props;
-
+    const { background, handleClick,  classes } = this.props;
+    // console.log(this.props);
     return (
       <CopyToClipBoard text={background} onCopy={handleClick} >
         <Grid item container xs={12} sm={4} md={3} direction="column" style={{ background }} className={classes.root} justify="flex-end">

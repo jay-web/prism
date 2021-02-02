@@ -40,6 +40,9 @@ const useStyles = createStyles({
     transform: "Scale(50)",
     position: "absolute",
   },
+  seeMore: {
+    textDecoration: "none"
+  }
 });
 
 export default useStyles;
