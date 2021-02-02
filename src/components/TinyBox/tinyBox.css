@@ -1,0 +1,17 @@
+.tinyBox{
+    height: 40px;
+    width: 50px;
+    transition: all .2s ease-in-out;
+}
+.showBoxes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+
+}
+
+.tinyBox:hover{
+    transform: scaleX(1.089);
+}

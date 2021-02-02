@@ -1,0 +1,24 @@
+.paletteBox{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    /* height: 200px; */
+    /* background-color: lightcoral; */
+    padding: .4rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    
+    
+}
+
+.colorBox{
+    flex-grow: 1;
+   
+}
+
+.contentBox{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-end;
+}
