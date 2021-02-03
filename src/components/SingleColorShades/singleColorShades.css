@@ -1,7 +1,33 @@
-.shadesPage{
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    padding: 1rem;
+.shadesBox{
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
    
+}
+
+.shadePage {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    overflow: hidden;
+ 
+}
+
+@media only screen and (max-width: 750px){
+    .shadesBox{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media only screen and (min-width: 750px){
+    .shadesBox{
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+@media only screen and (min-width: 1000px){
+    .shadesBox{
+        grid-template-columns: repeat(5, 1fr);
+    }
+
 }

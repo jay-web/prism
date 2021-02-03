@@ -4,7 +4,7 @@ import useStyles from "./colorBox.style";
 import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
-import CopyButton from "./CopyButton";
+import CopyButton from "../CopyButton/CopyButton";
 
 // import Snackbars from "./Snackbar";
 
