@@ -1,13 +1,12 @@
 import React from "react";
 import seedColors from "../../seedColors";
 import { generatePallette } from "../../colorGenerator";
-import { withRouter } from "react-router-dom";
-import Shades from "../Shades/Shades";
+import { withRouter, Link } from "react-router-dom";
+import Shades from "../Shades/shades";
 import "./singleColorShades.css";
 import { Grid } from "@material-ui/core";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-
 
 class SingleColorShades extends React.Component {
   constructor(props) {
@@ -44,11 +43,11 @@ class SingleColorShades extends React.Component {
 
   componentDidMount() {
     this.getShaded();
-
   }
   render() {
-   const { colorShades, level, format } = this.state;
-    
+    const { colorShades, level, format } = this.state;
+    const { paletteId, colorId } = this.props.match.params;
+
     return (
       <>
         <div className="shadesPage">
@@ -62,12 +61,12 @@ class SingleColorShades extends React.Component {
           />
           <div className="shadesBox">
             {colorShades.slice(1).map((color, idx) => {
-              return (
-               
-                  <Shades shades={color} key={idx} format={format}/>
-              
-              );
+              return <Shades shades={color} key={idx} format={format} />;
             })}
+            <div className="goBack">
+              <Link to={`/palette/${paletteId}`} className="goBackLink">Go Back to</Link>
+              <span>{paletteId}</span>
+            </div>
           </div>
           <Footer />
         </div>

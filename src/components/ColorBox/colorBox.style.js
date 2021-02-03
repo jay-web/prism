@@ -25,6 +25,7 @@ const useStyles = createStyles({
   },
   boxContent: {
     textTransform: "uppercase",
+    // color: "white"
   },
   overlay: {
     opacity: 0,
@@ -41,7 +42,13 @@ const useStyles = createStyles({
     position: "absolute",
   },
   seeMore: {
-    textDecoration: "none"
+    textDecoration: "none",
+    // color: "white",
+    backgroundColor: "#6e737b",
+    padding: "4px 7px"
+  },
+  dartText:{
+    // color: "black"
   }
 });
 

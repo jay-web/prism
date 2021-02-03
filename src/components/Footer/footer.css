@@ -4,6 +4,7 @@
     /* flex-grow: 1; */
     height: 4rem;
     text-align: center;
+    align-items: center;
     text-transform: uppercase;
    
     /* color: wheat; */

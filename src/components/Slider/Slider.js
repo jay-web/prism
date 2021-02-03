@@ -1,5 +1,9 @@
 import React from "react";
-import { PrismSlider} from "./sliderStyle";
+// import { PrismSlider} from "./sliderStyle";
+// import Slider from "@material-ui/core/Slider";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
+import "./sliderStyle.css";
 
 
 class SliderBox extends React.Component {
@@ -13,22 +17,24 @@ class SliderBox extends React.Component {
        
       }
 
+
   render() {
+    console.log(this.props.level)
     return (
-      <span style={{ display: "flex", width: "300px", alignItems: "center"}}>
-        <span>Level</span>
-        <PrismSlider
+      <span style={{ display: "flex", width: "320px", alignItems: "center"}}>
+        <span style={{marginRight: "10px"}}>Level</span>
+        <Slider
         //   defaultValue={this.props.level || 500}
           // track={false}
           defaultValue={this.props.level}
-          onChangeCommitted={this.valuetext}
+          onAfterChange={this.props.changeLevel}
           step={100}
-          marks={false}
+          // marks={false}
           min={100}
           max={900}
           
         />
-        <span>{this.props.level}</span>
+        <span style={{marginLeft: "10px"}}>{this.props.level}</span>
       </span>
     );
   }

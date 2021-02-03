@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from "@material-ui/lab/Alert";
 import CopyButton from "../CopyButton/CopyButton";
+import chroma from "chroma-js";
 
 // import Snackbars from "./Snackbar";
 
@@ -12,8 +13,11 @@ class InnerContent extends React.Component {
  
 
   render() {
-    const { name, classes, paletteId, id } = this.props;
-    console.log(this.props);
+    const { name, classes, paletteId, id, background } = this.props;
+    const isDarkColor = chroma(background).luminance() <= 0.8;
+    // const isLightColor = chroma(background).luminance() >= 0.8
+    const textColor = isDarkColor ? "white" : "black";
+    
     return (
       <div >
         <Grid container alignItems="center" justify="space-evenly" className={classes.buttonBox}>
@@ -21,9 +25,13 @@ class InnerContent extends React.Component {
             <CopyButton {...this.props} />
           </Grid>
           <Grid item container justify="space-between" alignItems="flex-end" className={classes.copyContainer}>
-            <Grid className={classes.boxContent}>{name}</Grid>
+            <Grid 
+                className={classes.boxContent}
+                style={ {color:`${textColor}`}}
+
+                >{name}</Grid>
             <Grid item >
-              <Link to={`/palette/${paletteId}/${id}`} className={classes.seeMore} onClick={e => e.stopPropagation()} >
+              <Link to={`/palette/${paletteId}/${id}`} className={classes.seeMore} style={ {color:`${textColor}`}} onClick={e => e.stopPropagation()} >
               More
               </Link>
               </Grid>

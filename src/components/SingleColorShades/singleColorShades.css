@@ -12,6 +12,23 @@
  
 }
 
+.goBack {
+    background-color: #6e737b;
+    
+    display: flex;
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   text-transform: uppercase;
+   height: 41vh;
+   
+}
+.goBackLink{
+    text-decoration: none;
+    color: black;
+    margin-bottom: 1rem;
+}
+
 @media only screen and (max-width: 750px){
     .shadesBox{
         grid-template-columns: repeat(2, 1fr);
