@@ -8,15 +8,38 @@
 .sidebars{
     flex-grow: 3;
 }
+.outerBox{
+    display: grid;
+    grid-template-rows: 2fr;
+}
+.homeheader{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+.homeheader h1 {
+    margin-left: 2rem;
+}
+.homeheader-fab {
+    margin-right: 2rem;
+}
+.homeheader-fab a {
+    text-decoration: none;
+}
+.palicon{
+    margin-right: .5rem;
+}
+
 .innerBox{
     background-color: white;
-    flex-grow: 6;
     display: flex;
     justify-content: space-around;
     align-items: center;
     flex-wrap: wrap;
     width: 75vw;
-    overflow-x: hidden;
+    /* height: 60vh; */
+    /* overflow-x: hidden; */
     border-radius: 5px;
    
     /* flex-direction: column; */

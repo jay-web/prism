@@ -1,8 +1,7 @@
 import React from "react";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "@material-ui/lab/Alert";
 import { Button } from "@material-ui/core";
 import PrismSnackBar from "../Snackbar/Snackbar";
+import chroma from "chroma-js";
 
 
 class CopyButton extends React.Component {
@@ -13,12 +12,15 @@ class CopyButton extends React.Component {
 
   render() {
     const { handleClick, handleClose, classes, copied, background } = this.props;
+    const isDarkColor = chroma(background).luminance() <= 0.8;
+    const textColor = isDarkColor ? "white" : "black";
     return (
       <div ref={this.myRef} >
         <Button
           variant="outlined"
           onClick={handleClick}
           className={classes.button}
+          style={{color: `${textColor}`, borderColor: `${textColor}`}}
         >
           Copy
         </Button>

@@ -6,6 +6,7 @@ import "./App.css";
 import { generatePallette} from "./colorGenerator";
 import Home from "./components/Home/Home";
 import SingleColorShades from "./components/SingleColorShades/SingleColorShades";
+import CreateNewPalette from "./components/CreateNewPalette/CreateNewPalette";
 
 const findPalette = (paletteName)  => {
   return seedColors.find((item) => {
@@ -18,7 +19,7 @@ function App() {
   return (
     <Switch>
       <Route exact path="/" component={Home}/>
-      
+      <Route exact path="/palette/createnew" component={CreateNewPalette} />
       <Route 
         exact 
         path="/palette/:paletteName" 
