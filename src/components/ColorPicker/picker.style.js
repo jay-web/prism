@@ -4,7 +4,8 @@ export default {
         height: "70vh",
         flexDirection: "column",
         alignItems: "center",
-        justifyContent: "space-around"
+        justifyContent: "space-around",
+        fontFamily: 'New Rocker, cursive'
     },
     button:{
         marginRight: ".5rem"

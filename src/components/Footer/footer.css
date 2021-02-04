@@ -1,11 +1,13 @@
 .footer{
-    background-color: teal;
-    /* padding-top: 1rem; */
-    /* flex-grow: 1; */
+    background-color: #2a313a;
+    
     height: 4rem;
-    text-align: center;
+    display: flex;
+   justify-content: space-around;
     align-items: center;
     text-transform: uppercase;
+    color: white
    
-    /* color: wheat; */
+  
 }
+

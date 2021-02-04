@@ -1,9 +1,8 @@
 import React from "react";
-import { Grid, withStyles, Button } from "@material-ui/core";
+import { Grid, withStyles } from "@material-ui/core";
 import useStyles from "./colorBox.style";
 import { Link } from "react-router-dom";
-import Snackbar from "@material-ui/core/Snackbar";
-import Alert from "@material-ui/lab/Alert";
+
 import CopyButton from "../CopyButton/CopyButton";
 import chroma from "chroma-js";
 

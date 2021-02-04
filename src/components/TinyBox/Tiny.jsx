@@ -1,6 +1,6 @@
 import React from "react";
 import "./tinyBox.css";
-import { Link } from "react-router-dom";
+
 
 class TinyBox extends React.Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class TinyBox extends React.Component {
     });
   }
   render() {
-    const { colors, name } = this.props;
+    // const { colors, name } = this.props;
     // console.log(colors);
     return <div className="showBoxes"> {this.renderTinyColorBox()}</div>;
   }

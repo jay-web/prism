@@ -15,14 +15,22 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { Link } from "react-router-dom";
 import useStyles from "./prismDrawer.style";
 import PrismColorPicker from "../ColorPicker/Colorpicker";
+import NewColor from "../NewColor/NewColor";
+import Button from '@material-ui/core/Button';
+import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+import chroma from "chroma-js";
 
 
 
 export default function PrismDrawer() {
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
+  const [headerColor, setHeaderColor] = React.useState("#064cd5")
+  const [colorsList, setColors] = React.useState([{ color: "#064cd5", colorName: "teal" }]);
 
+  const isDarkMode = chroma(headerColor).luminance() <= 0.8;
+  const textColor = isDarkMode ? "white" : "black";
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -31,11 +39,20 @@ export default function PrismDrawer() {
     setOpen(false);
   };
 
+  const changeColor = (newColor) => {
+      setHeaderColor(newColor)
+  }
+
+  const addNewColor = (newColor ) => {
+      console.log("new color", newColor);
+      setColors([...colorsList, newColor]);
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
+        style={{ backgroundColor: headerColor}}
         className={clsx(classes.appBar, {
           [classes.appBarShift]: open,
         })}
@@ -50,11 +67,20 @@ export default function PrismDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            <Link to="/" className={classes.title}>
+          <Typography variant="h6" noWrap className={classes.titleBox}>
+            <Link to="/" className={classes.title} style={{ color: `${textColor}`}}>
               Prism
             </Link>
           </Typography>
+          <Button
+        variant="contained"
+        size="small"
+        color="default"
+        className={classes.button}
+        startIcon={<CloudUploadIcon />}
+      >
+        Upload
+      </Button>
         </Toolbar>
       </AppBar>
       <Drawer
@@ -74,7 +100,10 @@ export default function PrismDrawer() {
         </div>
         <Divider />
         <div >
-        <PrismColorPicker />
+        <PrismColorPicker 
+            onChangeColor={changeColor} 
+            addNewColor={addNewColor} 
+            colorsList={colorsList}/>
         </div>
 
         
@@ -86,6 +115,12 @@ export default function PrismDrawer() {
         })}
       >
         <div className={classes.drawerHeader} />
+        <div className={classes.boxContainer}>
+        {colorsList.map((item, idx) => {
+            return <NewColor color={item} key={idx}/>
+        })}
+        </div>
+      
       </main>
     </div>
   );

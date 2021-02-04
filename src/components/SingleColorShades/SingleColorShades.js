@@ -4,10 +4,11 @@ import { generatePallette } from "../../colorGenerator";
 import { withRouter, Link } from "react-router-dom";
 import Shades from "../Shades/Shades";
 import "./singleColorShades.css";
-import { Grid } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 class SingleColorShades extends React.Component {
   constructor(props) {
@@ -47,8 +48,7 @@ class SingleColorShades extends React.Component {
   }
   render() {
     const { colorShades, level, format } = this.state;
-    const { paletteId, colorId } = this.props.match.params;
-   
+    const { paletteId } = this.props.match.params;
 
     return (
       <>
@@ -63,14 +63,22 @@ class SingleColorShades extends React.Component {
           />
           <div className="shadesBox">
             {colorShades.slice(1).map((color, idx) => {
-              return <Shades shades={color} key={idx} format={format} />
+              return <Shades shades={color} key={idx} format={format} />;
             })}
             <div className="goBack">
-              <Link to={`/palette/${paletteId}`} className="goBackLink">Go Back to</Link>
+              <Link to={`/palette/${paletteId}`} className="goBackLink">
+                <Button
+                  variant="outlined"
+                  color="default"
+                  startIcon={<ArrowBackIcon />}
+                >
+                  Go Back to
+                </Button>
+              </Link>
               <span>{paletteId}</span>
             </div>
           </div>
-          <Footer />
+          <Footer name={paletteId}/>
         </div>
       </>
     );
