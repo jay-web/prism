@@ -1,5 +1,5 @@
 .tinyBox{
-    height: 40px;
+    /* height: 10vh; */
     width: 50px;
     transition: all .2s ease-in-out;
     
@@ -7,6 +7,7 @@
 .showBoxes{
     display: flex;
     flex-direction: row;
+    height: 100%;
     /* justify-content: space-around; */
     flex-wrap:wrap;
     

@@ -12,25 +12,28 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import useStyles from "./prismDrawer.style";
 import PrismColorPicker from "../ColorPicker/Colorpicker";
 import NewColor from "../NewColor/NewColor";
 import Button from '@material-ui/core/Button';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import chroma from "chroma-js";
+import { colors } from "@material-ui/core";
+import PrismDialog from "../Dialog/PrismDialog";
 
 
-
-export default function PrismDrawer() {
+function PrismDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [headerColor, setHeaderColor] = React.useState("#064cd5")
-  const [colorsList, setColors] = React.useState([{ color: "#064cd5", colorName: "teal" }]);
+  const [colorsList, setColorsList] = React.useState([{ color: "#064cd5", name: "teal" }]);
 
   const isDarkMode = chroma(headerColor).luminance() <= 0.8;
   const textColor = isDarkMode ? "white" : "black";
+
+  const { savePalette,palettes } = props;
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -45,8 +48,14 @@ export default function PrismDrawer() {
 
   const addNewColor = (newColor ) => {
       console.log("new color", newColor);
-      setColors([...colorsList, newColor]);
+      setColorsList([...colorsList, newColor]);
   }
+
+  const deleteColor = (colorName) => {
+    const colors = colorsList.filter((color) => color.name !== colorName);
+    setColorsList(colors);
+  }
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -72,15 +81,8 @@ export default function PrismDrawer() {
               Prism
             </Link>
           </Typography>
-          <Button
-        variant="contained"
-        size="small"
-        color="default"
-        className={classes.button}
-        startIcon={<CloudUploadIcon />}
-      >
-        Upload
-      </Button>
+          <PrismDialog colorsList={colorsList} savePalette={savePalette} palettes={palettes} />
+        
         </Toolbar>
       </AppBar>
       <Drawer
@@ -117,7 +119,7 @@ export default function PrismDrawer() {
         <div className={classes.drawerHeader} />
         <div className={classes.boxContainer}>
         {colorsList.map((item, idx) => {
-            return <NewColor color={item} key={idx}/>
+            return <NewColor color={item} key={idx} deleteColor={() => deleteColor(item.name)} />
         })}
         </div>
       
@@ -125,3 +127,6 @@ export default function PrismDrawer() {
     </div>
   );
 }
+
+
+export default withRouter(PrismDrawer)

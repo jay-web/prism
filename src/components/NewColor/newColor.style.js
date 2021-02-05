@@ -4,7 +4,7 @@ export default {
     root:{
         display: "grid",
         gridTemplateColumn: "1fr 1fr 1fr",
-        height: "25vh",
+        height: "23vh",
         color: "white",
         alignItem: "center",
         fontFamily: 'New Rocker, cursive',

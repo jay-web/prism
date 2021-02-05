@@ -19,7 +19,7 @@ class PrismColorPicker extends React.Component {
   
     ValidatorForm.addValidationRule("isColorNameUnique", (value) => {
       
-     return this.props.colorsList.every(({colorName}) => colorName.toLowerCase() !== value.toLowerCase() );
+     return this.props.colorsList.every(({name}) => name.toLowerCase() !== value.toLowerCase() );
     });
 
     ValidatorForm.addValidationRule("isColorUnique", (value) => {
@@ -42,7 +42,7 @@ class PrismColorPicker extends React.Component {
   handleAddColor = (color) => {
     const newColor = {
       color: this.state.currentColor,
-      colorName: this.state.colorName,
+      name: this.state.colorName,
     };
     console.log(newColor);
     this.props.addNewColor(newColor);

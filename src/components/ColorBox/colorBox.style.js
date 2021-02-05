@@ -4,6 +4,7 @@ const useStyles = createStyles({
   root: {
     flexGrow: 1,
     cursor: "pointer",
+    // maxHeight: "17vh",
     "&:hover button": {
       opacity: "1",
     },

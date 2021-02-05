@@ -26,7 +26,7 @@ class InnerContent extends React.Component {
           <Grid item container justify="space-between" alignItems="flex-end" className={classes.copyContainer}>
             <Grid 
                 className={classes.boxContent}
-                style={ {color:`${textColor}`}}
+                style={ {color:`${textColor}`, flexWrap: "wrap", width: ".5rem"}}
 
                 >{name}</Grid>
             <Grid item >

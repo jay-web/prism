@@ -1,10 +1,10 @@
 import {createStyles} from "@material-ui/core";
 
 const useStyles = createStyles({
-   
 
     center:{
-        flexGrow: 2
+        flexGrow: 1,
+        minHeight: "82.5vh"
     },
 
 })

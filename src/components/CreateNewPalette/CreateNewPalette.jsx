@@ -3,9 +3,10 @@ import PrismDrawer from "../PrismDrawer/PrismDrawer";
 
 class CreateNewPalette extends React.Component {
     render(){
+        const { savePalette, palettes } = this.props;
         return (
             <div>
-               <PrismDrawer />
+               <PrismDrawer savePalette={savePalette} palettes={palettes} />
             </div>
         )
     }

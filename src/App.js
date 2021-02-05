@@ -8,31 +8,49 @@ import Home from "./components/Home/Home";
 import SingleColorShades from "./components/SingleColorShades/SingleColorShades";
 import CreateNewPalette from "./components/CreateNewPalette/CreateNewPalette";
 
-const findPalette = (paletteName)  => {
-  return seedColors.find((item) => {
-    return item.id === paletteName;     // id is equal to palette name in db
-  })
-}
 
-function App() {
 
+
+
+class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {palettes: seedColors}
+
+  }
+
+  findPalette = (paletteName)  => {
+    return this.state.palettes.find((item) => {
+      return item.id === paletteName;     // id is equal to palette name in db
+    })
+  }
+
+  saveNewPalette = (newPalette) => {
+    console.log(newPalette);
+    this.setState({palettes: [...this.state.palettes, newPalette]})
+  }
+
+  render(){
+    const { palettes } = this.state;
   return (
     <Switch>
-      <Route exact path="/" component={Home}/>
-      <Route exact path="/palette/createnew" component={CreateNewPalette} />
+      
+      <Route exact path="/palette/createnew" render={() => <CreateNewPalette savePalette={this.saveNewPalette} palettes={palettes}/> }  />
+      <Route exact path="/" render={() => <Home palettes={palettes} />} />
       <Route 
         exact 
         path="/palette/:paletteName" 
         render={(routeProps) => (
           <Palettes 
           paletteId={routeProps.match.params.paletteName}
-          palettes={generatePallette(findPalette(routeProps.match.params.paletteName))} />
+          palettes={generatePallette(this.findPalette(routeProps.match.params.paletteName))} />
         ) }
         />
-        <Route exact path="/palette/:paletteId/:colorId" component={SingleColorShades} />
+        <Route exact path="/palette/:paletteId/:colorId" render={() => <SingleColorShades palettes={palettes} /> } />
         
     </Switch>
   );
+}
 }
 
 export default App;

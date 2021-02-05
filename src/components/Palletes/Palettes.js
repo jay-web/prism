@@ -15,6 +15,8 @@ class Palettes extends React.Component {
     this.handleFormat = this.handleFormat.bind(this);
   }
 
+  
+
   changeLevel(level) {
     this.setState({ level: level });
     console.log(level);
@@ -34,6 +36,7 @@ class Palettes extends React.Component {
         <ColorBox background={item[format]} {...items}  key={item.name} />
       );
     });
+
     return (
       <Grid container direction="column">
         <Grid item>
@@ -48,7 +51,7 @@ class Palettes extends React.Component {
         </Grid>
 
         {/* <Slider defaultValue={level} min={100} max={900} step={100} onAfterChange={this.changeLevel} /> */}
-        <Grid item container >
+        <Grid item container className={classes.center}>
           {colorBoxes}
         </Grid>
         <Grid item className={classes.footer}>

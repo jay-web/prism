@@ -44,6 +44,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
+    height: `calc(100vh - 64px)`,
     // padding: theme.spacing(3),
     transition: theme.transitions.create("margin", {
       easing: theme.transitions.easing.sharp,
@@ -67,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   boxContainer: {
-      height: "100vh - 64px",
+      // height: "100vh - 64px",
     display: "grid",
     gridTemplateColumns: "repeat(4, 1fr)",
   },

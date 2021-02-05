@@ -24,7 +24,8 @@ class SingleColorShades extends React.Component {
   };
 
   findPalette = (paletteName) => {
-    return seedColors.find((item) => {
+    const { palettes } = this.props;
+    return palettes.find((item) => {
       return item.id === paletteName; // id is equal to palette name in db
     });
   };

@@ -9,8 +9,15 @@ import { Link } from "react-router-dom";
 import "./home.css";
 
 class Home extends React.Component {
+  constructor(props){
+    super(props);
+    
+  }
+
   renderPalettes = () => {
-    return seedColors.map((item) => {
+  
+    return this.props.palettes.map((item) => {
+      console.log(item);
       return (
         <div key={item.id}>
           <PaletteBox {...item} />
