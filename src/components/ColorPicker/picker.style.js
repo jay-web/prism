@@ -7,9 +7,15 @@ export default {
         justifyContent: "space-around",
         fontFamily: 'New Rocker, cursive'
     },
+    buttonBox:{
+        marginTop: "3rem"
+    },
     button:{
         marginRight: ".5rem"
     },
+    picker:{
+        marginTop: "1rem"
+    }
 
 
 }

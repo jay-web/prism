@@ -3,6 +3,7 @@ import { withStyles, Paper } from "@material-ui/core";
 import styles from "./newColor.style";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import chroma from "chroma-js";
+import {SortableElement} from 'react-sortable-hoc';
 
 class NewColor extends React.Component {
   render() {
@@ -26,4 +27,4 @@ class NewColor extends React.Component {
   }
 }
 
-export default withStyles(styles)(NewColor);
+export default SortableElement(withStyles(styles)(NewColor));

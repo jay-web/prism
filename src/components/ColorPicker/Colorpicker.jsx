@@ -12,7 +12,7 @@ import chroma from "chroma-js";
 class PrismColorPicker extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { currentColor: "#ADD8E6", colorName: "" };
+    this.state = { currentColor: "#0d84b2", colorName: "" };
   }
 
   componentDidMount() {
@@ -59,7 +59,7 @@ class PrismColorPicker extends React.Component {
 
     return (
       <div className={classes.root}>
-        <div>
+        <div className={classes.buttonBox}>
           <Button
             variant="contained"
             color="secondary"
@@ -79,6 +79,7 @@ class PrismColorPicker extends React.Component {
 
         <SketchPicker
           color={this.state.currentColor}
+          className={classes.picker}
           onChangeComplete={this.handleChangeComplete}
         />
 

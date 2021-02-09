@@ -15,20 +15,20 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import { Link, withRouter } from "react-router-dom";
 import useStyles from "./prismDrawer.style";
 import PrismColorPicker from "../ColorPicker/Colorpicker";
-import NewColor from "../NewColor/NewColor";
-import Button from '@material-ui/core/Button';
-import CloudUploadIcon from '@material-ui/icons/CloudUpload';
+
 import chroma from "chroma-js";
-import { colors } from "@material-ui/core";
+
 import PrismDialog from "../Dialog/PrismDialog";
+import arrayMove from 'array-move';
+import DraggableList from "../DraggableList/DraggableList";
 
 
 function PrismDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const [headerColor, setHeaderColor] = React.useState("#064cd5")
-  const [colorsList, setColorsList] = React.useState([{ color: "#064cd5", name: "teal" }]);
+  const [headerColor, setHeaderColor] = React.useState("#0d84b2")
+  const [colorsList, setColorsList] = React.useState([{ color: "#0d84b2", name: "blue" }]);
 
   const isDarkMode = chroma(headerColor).luminance() <= 0.8;
   const textColor = isDarkMode ? "white" : "black";
@@ -55,6 +55,13 @@ function PrismDrawer(props) {
     const colors = colorsList.filter((color) => color.name !== colorName);
     setColorsList(colors);
   }
+
+  const onSortEnd = ({oldIndex, newIndex}) => {
+    // this.setState(({items}) => ({
+    //   items: arrayMove(items, oldIndex, newIndex),
+    // }));
+    setColorsList(arrayMove(colorsList, oldIndex, newIndex))
+  };
 
   return (
     <div className={classes.root}>
@@ -117,11 +124,9 @@ function PrismDrawer(props) {
         })}
       >
         <div className={classes.drawerHeader} />
-        <div className={classes.boxContainer}>
-        {colorsList.map((item, idx) => {
-            return <NewColor color={item} key={idx} deleteColor={() => deleteColor(item.name)} />
-        })}
-        </div>
+        
+          <DraggableList  axis="xy" colorsList={colorsList}  onSortEnd={onSortEnd} deleteColor={deleteColor}/>
+      
       
       </main>
     </div>
