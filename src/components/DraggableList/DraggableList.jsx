@@ -1,5 +1,5 @@
 import React from "react";
-import {SortableContainer, SortableElement} from 'react-sortable-hoc';
+import {SortableContainer} from 'react-sortable-hoc';
 import NewColor from "../NewColor/NewColor";
 import {withStyles } from "@material-ui/core";
 

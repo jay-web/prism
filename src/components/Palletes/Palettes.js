@@ -3,7 +3,7 @@ import ColorBox from "../ColorBox/ColorBox";
 import { Grid, withStyles } from "@material-ui/core";
 import useStyles from "./Palettes.styles";
 import Header from "../Header/Header";
-import Slider from "rc-slider";
+// import Slider from "rc-slider";
 import Footer from "../Footer/Footer";
 import "rc-slider/assets/index.css";
 

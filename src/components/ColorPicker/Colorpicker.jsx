@@ -46,8 +46,14 @@ class PrismColorPicker extends React.Component {
     };
     console.log(newColor);
     this.props.addNewColor(newColor);
-    this.setState({colorName: ""})
+    // this.setState({colorName: ""})
   };
+
+  createRandomColor = () =>  {
+    const allColors = this.props.allPalettes.map((p) => p.colors).flat();
+    const rand = Math.floor(Math.random() * allColors.length);
+    this.props.addNewColor(allColors[rand]);
+  }
 
  
 
@@ -56,6 +62,8 @@ class PrismColorPicker extends React.Component {
     const { classes } = this.props;
     const isDarkMode = chroma(this.state.currentColor).luminance() <= 0.8;
     const textColor = isDarkMode ? "white" : "black";
+    const paletteIsFull = this.props.colorsList.length >= 20;
+    const addButtonColor = paletteIsFull ? "grey" : this.state.currentColor;
 
     return (
       <div className={classes.root}>
@@ -64,6 +72,7 @@ class PrismColorPicker extends React.Component {
             variant="contained"
             color="secondary"
             className={classes.button}
+            onClick= {this.props.clearColorsList}
             startIcon={<DeleteIcon />}
           >
             Clear Color
@@ -71,7 +80,10 @@ class PrismColorPicker extends React.Component {
           <Button
             variant="contained"
             color="default"
-            startIcon={<CloudUploadIcon />}
+            onClick={this.createRandomColor}
+            disabled={paletteIsFull}
+            startIcon={<CloudUploadIcon />
+            }
           >
             Random Color
           </Button>
@@ -100,12 +112,13 @@ class PrismColorPicker extends React.Component {
             variant="contained"
             color="primary"
             size="large"
-            style={{ backgroundColor: this.state.currentColor, marginTop: "1rem", color: `${textColor}` }}
+            style={{ backgroundColor: addButtonColor, marginTop: "1rem", cursor: "pointer", color: `${textColor}` }}
             startIcon={<SaveIcon />}
             // onClick={this.handleInputSubmit}
             type="submit"
+            disabled={paletteIsFull}
           >
-            Add Color
+            {paletteIsFull ? "Palette full" : "Add Color" }
           </Button>
         </ValidatorForm>
       </div>

@@ -1,23 +1,20 @@
 import React from "react";
-import seedColors from "../../seedColors";
+
 import PaletteBox from "../PalleteBox/PaletteBox";
-import { Paper } from "@material-ui/core";
+
 import Fab from '@material-ui/core/Fab';
-import AddIcon from '@material-ui/icons/Add';
+
 import PaletteIcon from '@material-ui/icons/Palette';
 import { Link } from "react-router-dom";
 import "./home.css";
 
 class Home extends React.Component {
-  constructor(props){
-    super(props);
-    
-  }
+ 
 
   renderPalettes = () => {
   
     return this.props.palettes.map((item) => {
-      console.log(item);
+      // console.log(item);
       return (
         <div key={item.id}>
           <PaletteBox {...item} />

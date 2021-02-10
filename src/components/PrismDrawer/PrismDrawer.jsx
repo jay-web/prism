@@ -1,6 +1,6 @@
 import React from "react";
 import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+// import { makeStyles, useTheme } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import AppBar from "@material-ui/core/AppBar";
@@ -25,13 +25,14 @@ import DraggableList from "../DraggableList/DraggableList";
 
 function PrismDrawer(props) {
   const classes = useStyles();
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [headerColor, setHeaderColor] = React.useState("#0d84b2")
   const [colorsList, setColorsList] = React.useState([{ color: "#0d84b2", name: "blue" }]);
 
   const isDarkMode = chroma(headerColor).luminance() <= 0.8;
   const textColor = isDarkMode ? "white" : "black";
+  const allPalettes = props.palettes;
 
   const { savePalette,palettes } = props;
   const handleDrawerOpen = () => {
@@ -62,6 +63,10 @@ function PrismDrawer(props) {
     // }));
     setColorsList(arrayMove(colorsList, oldIndex, newIndex))
   };
+
+  const clearColorsList = () => {
+    setColorsList([]);
+  }
 
   return (
     <div className={classes.root}>
@@ -112,6 +117,8 @@ function PrismDrawer(props) {
         <PrismColorPicker 
             onChangeColor={changeColor} 
             addNewColor={addNewColor} 
+            clearColorsList={clearColorsList}
+            allPalettes={allPalettes}
             colorsList={colorsList}/>
         </div>
 
