@@ -54,6 +54,3 @@ class App extends React.Component {
 }
 
 export default App;
-{/* <div className="App">
-     <Palettes palettes={generatePallette(seedColors[1])} />
-    </div> */}
