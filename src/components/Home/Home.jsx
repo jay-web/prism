@@ -17,7 +17,7 @@ class Home extends React.Component {
       // console.log(item);
       return (
         <div key={item.id}>
-          <PaletteBox {...item} />
+          <PaletteBox {...item} deletePalette={this.props.deletePalette}/>
         </div>
       );
     });

@@ -30,10 +30,10 @@ class Palettes extends React.Component {
     const { level, format } = this.state;
     
     console.log(this.props);
-    const colorBoxes = colors[level].map((item) => {
+    const colorBoxes = colors[level].map((item, idx) => {
       const items = {...item, paletteId};
       return (
-        <ColorBox background={item[format]} {...items}  key={item.name} />
+        <ColorBox background={item[format]} {...items}  key={idx} />
       );
     });
 

@@ -12,10 +12,12 @@ import CreateNewPalette from "./components/CreateNewPalette/CreateNewPalette";
 
 
 
+
 class App extends React.Component {
   constructor(props){
     super(props);
-    this.state = {palettes: seedColors}
+    const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
+    this.state = {palettes: savedPalettes || seedColors}
 
   }
 
@@ -27,7 +29,18 @@ class App extends React.Component {
 
   saveNewPalette = (newPalette) => {
     console.log(newPalette);
-    this.setState({palettes: [...this.state.palettes, newPalette]})
+    this.setState({palettes: [...this.state.palettes, newPalette]}, this.syncLocalStorage)
+  }
+
+  syncLocalStorage = () => {
+    // save palettes to localstorage
+    window.localStorage.setItem("palettes", JSON.stringify(this.state.palettes));
+  }
+
+  deletePalette = (id) => {
+    const palettes = this.state.palettes.filter((item) => item.id !== id);
+    this.setState({palettes:palettes }, this.syncLocalStorage)
+    console.log(id);
   }
 
   render(){
@@ -36,7 +49,7 @@ class App extends React.Component {
     <Switch>
       
       <Route exact path="/palette/createnew" render={() => <CreateNewPalette savePalette={this.saveNewPalette} palettes={palettes}/> }  />
-      <Route exact path="/" render={() => <Home palettes={palettes} />} />
+      <Route exact path="/" render={() => <Home palettes={palettes} deletePalette={this.deletePalette} />} />
       <Route 
         exact 
         path="/palette/:paletteName" 

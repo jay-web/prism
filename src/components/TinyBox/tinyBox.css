@@ -5,6 +5,7 @@
     
 }
 .showBoxes{
+    position: relative;
     display: flex;
     flex-direction: row;
     height: 100%;
@@ -16,6 +17,18 @@
 
 }
 
+
 .tinyBox:hover{
     transform: scaleX(1.089);
+}
+.showBoxes:hover .deleteBox{
+    opacity: 1;
+    z-index: 1000;
+}
+
+.deleteBox{
+    position: absolute;
+    top:5px;
+    right: 10px;
+    opacity: 0;
 }

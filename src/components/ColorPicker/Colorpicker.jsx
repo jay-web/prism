@@ -96,7 +96,7 @@ class PrismColorPicker extends React.Component {
         />
 
         <ValidatorForm
-          ref="form"
+          // ref="form"
           onSubmit={this.handleAddColor}
           onError={(errors) => console.log(errors)}
           style={{ marginTop: ".5rem" }}
