@@ -5,6 +5,7 @@ export default {
         display: "grid",
         gridTemplateColumn: "1fr 1fr 1fr",
         height: "23vh",
+        // width: "25vh",
         color: "white",
         alignItem: "center",
         fontFamily: 'New Rocker, cursive',
@@ -22,6 +23,7 @@ export default {
         display: "flex",
         flexDirection: "column",
         textAlign: "center",
+        wordBreak: "break-word"
         // alignItem: "center"
         
     },

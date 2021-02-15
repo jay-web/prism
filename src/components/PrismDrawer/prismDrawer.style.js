@@ -8,12 +8,14 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: 'New Rocker, cursive'
   },
   appBar: {
+  
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
   },
   appBarShift: {
+    
     width: `calc(100% - ${drawerWidth}px)`,
     marginLeft: drawerWidth,
     transition: theme.transitions.create(["margin", "width"], {
@@ -77,17 +79,19 @@ const useStyles = makeStyles((theme) => ({
       display: "grid",
       gridTemplateColumns: "repeat(2, 1fr)",
     },
-    "@media only screen and (min-width: 750px)": {
-      boxContainer: {
-        display: "grid",
-        gridTemplateColumns: "repeat(3, 1fr)",
-      },
+    
+    
+  },
+  "@media only screen and (min-width: 750px)": {
+    boxContainer: {
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
     },
-    "@media only screen and (min-width: 1000px)": {
-      boxContainer: {
-        display: "grid",
-        gridTemplateColumns: "repeat(4, 1fr)",
-      },
+  },
+  "@media only screen and (min-width: 1000px)": {
+    boxContainer: {
+      display: "grid",
+      gridTemplateColumns: "repeat(4, 1fr)",
     },
   },
 }));

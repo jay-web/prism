@@ -5,7 +5,7 @@ import {withStyles } from "@material-ui/core";
 
 import styles from "./draggableListStyle";
 
-const DraggableList = ({ colorsList, onSortEnd, deleteColor, classes}) => {
+const DraggableList = ({ colorsList, deleteColor, classes}) => {
     return (
         <div className={classes.root} >
             {colorsList.map((item, idx) => {

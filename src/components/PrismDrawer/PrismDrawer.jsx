@@ -1,26 +1,25 @@
 import React from "react";
 import clsx from "clsx";
-// import { makeStyles, useTheme } from "@material-ui/core/styles";
+
 import Drawer from "@material-ui/core/Drawer";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
 
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import useStyles from "./prismDrawer.style";
 import PrismColorPicker from "../ColorPicker/Colorpicker";
 
 import chroma from "chroma-js";
 
-import PrismDialog from "../Dialog/PrismDialog";
+
 import arrayMove from 'array-move';
 import DraggableList from "../DraggableList/DraggableList";
+
+import DrawerAppBar from "../DrawerAppBar/DrawerAppBar";
 
 
 function PrismDrawer(props) {
@@ -71,32 +70,11 @@ function PrismDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        position="fixed"
-        style={{ backgroundColor: headerColor}}
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" noWrap className={classes.titleBox}>
-            <Link to="/" className={classes.title} style={{ color: `${textColor}`}}>
-              Prism
-            </Link>
-          </Typography>
-          <PrismDialog colorsList={colorsList} savePalette={savePalette} palettes={palettes} />
-        
-        </Toolbar>
-      </AppBar>
+      <DrawerAppBar open={open} headerColor={headerColor}  handleDrawerOpen={handleDrawerOpen} 
+                textColor={textColor} 
+                colorsList={colorsList} 
+                savePalette={savePalette}
+                palettes={palettes} />
       <Drawer
         className={classes.drawer}
         variant="persistent"

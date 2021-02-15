@@ -6,6 +6,25 @@
   font-family: 'New Rocker';
 }
 
+.switch-wrapper {
+  position: relative;
+}
+
+.switch-wrapper > div {
+  position: absolute;
+  /* height: 100vh; */
+  width: 100%;
+  /* position: fixed; */
+  /* display: contents; */
+}
+
+.page{
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  display: contents;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -15,6 +34,14 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.fade-exit{
+  opacity: 1;
+}
+.fade-exit-active{
+  opacity: 1;
+  transition: "opacity 500ms ease-out";
 }
 
 .App-header {

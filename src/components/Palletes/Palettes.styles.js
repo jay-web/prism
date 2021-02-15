@@ -4,7 +4,9 @@ const useStyles = createStyles({
 
     center:{
         flexGrow: 1,
-        minHeight: "82.5vh"
+        minHeight: "82.5vh",
+        fontFamily: 'New Rocker',
+        // overflow: 'scroll'
     },
 
 })
