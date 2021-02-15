@@ -51,8 +51,18 @@ class PrismColorPicker extends React.Component {
 
   createRandomColor = () =>  {
     const allColors = this.props.allPalettes.map((p) => p.colors).flat();
-    const rand = Math.floor(Math.random() * allColors.length);
-    this.props.addNewColor(allColors[rand]);
+    let rand;
+    let newColor;
+    let isDuplicateColor = true;
+    while(isDuplicateColor){
+      rand = Math.floor(Math.random() * allColors.length);
+      newColor = allColors[rand];
+      isDuplicateColor = this.props.colorsList.some(color => color.name == newColor.name)
+      console.log(newColor);
+    }
+
+    
+    this.props.addNewColor(newColor);
   }
 
  

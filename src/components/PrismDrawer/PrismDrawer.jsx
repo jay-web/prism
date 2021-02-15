@@ -47,7 +47,7 @@ function PrismDrawer(props) {
   }
 
   const addNewColor = (newColor ) => {
-      console.log("new color", newColor);
+      // console.log("new color", newColor);
       setColorsList([...colorsList, newColor]);
   }
 
