@@ -45,7 +45,7 @@ const DrawerAppBar = (props) => {
         </IconButton>
         <Typography variant="h6" noWrap className={classes.titleBox}>
           <Link
-            to="/"
+            to="/prism"
             className={classes.title}
             style={{ color: `${textColor}` }}
           >

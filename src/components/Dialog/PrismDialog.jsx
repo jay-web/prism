@@ -49,7 +49,7 @@ class PrismDialog extends React.Component {
       colors: this.props.colorsList,
     };
     this.props.savePalette(color);
-    this.props.history.push("/");
+    this.props.history.push("/prism");
   };
 
   handleInputChange = (event) => {
