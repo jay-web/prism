@@ -16,7 +16,7 @@ class Header extends React.Component {
     } = this.props;
     return (
       <div className="header-root">
-        <Link to="/" className="title" ><span >Prism</span></Link>
+        <Link to="/prism" className="title" ><span >Prism</span></Link>
         { showSlider && <SliderBox changeLevel={changeLevel} level={level} /> }
         <FormatSelector format={format} handleChange={handleFormat} />
       </div>
