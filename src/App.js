@@ -106,6 +106,17 @@ class App extends React.Component {
                       </div>
                     )}
                   />
+                     <Route
+                    
+                    render={() => (
+                      <div className="">
+                        <Home
+                          palettes={palettes}
+                          deletePalette={this.deletePalette}
+                        />
+                      </div>
+                    )}
+                  />
                
                 </AnimatedSwitch>
             // </TransitionGroup>
