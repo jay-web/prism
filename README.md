@@ -1,10 +1,19 @@
-# Getting Started with Create React App
+# Prism - The world of colors
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+It is reactjs based front end application. Chroma-js and Material-UI are also integrated to generate color palletes and application UI. User can use already generated color palettes or can generate new palette according to requirement. User can copy different color shades code. User can switch code format which is available in hexadecimal, RGB and RGBA format. New color palette can create with drag & drop feature to serialize the color shade according to choice.
 
-## Available Scripts
+### Go live
 
-In the project directory, you can run:
+https://jay-web.github.io/prism/
+
+
+### Available Scripts
+
+After copy the repo, in the project directory, you can run:
+
+### `npm install`
+
+All the required packages will get install.
 
 ### `npm start`
 
